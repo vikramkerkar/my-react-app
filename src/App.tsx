@@ -13,10 +13,9 @@ function App() {
 
   return (
     <div className="flex justify-center items-center w-screen h-screen gap-10 flex-wrap">
-    {data && data.length > 0 && !data[data.length-1]?.error && data?.map((weatherData) => <WeatherDetails data={weatherData as IWeatherDetails}/>)}
+    {data && data.length > 0 && !data[data.length-1]?.error && data?.map((weatherData) => <WeatherDetails key = {JSON.stringify(weatherData)} data={weatherData as IWeatherDetails}/>)}
      
       <AddNewLocation existingData={data as IWeatherDetails[]} setData={setData}/>
-      {/* {data?.error  && <div className="text-red">An error occurred</div>} */}
     </div>
   )
 }

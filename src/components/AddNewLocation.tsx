@@ -18,7 +18,9 @@ const AddNewLocation = ({setData, existingData}:IAddNewLocationProps ) => {
         try {
         const res = await fetch(url);
         const data = await res.json();
-        setData([ ...existingData || [], data as IWeatherDetails])
+        const filtered = existingData?.filter(wdata => wdata.location.name !== data.location.name)
+        console.log(filtered)
+        setData([ ...filtered || [], data as IWeatherDetails])
         } catch(error) {
             console.log(error)
         }
